@@ -1,0 +1,21 @@
+{
+    "dependencies": {
+        "nodemon": "1.18.3",
+        "express": "4.16.4",
+        "pg": "7.6.0",
+        "redis": "2.8.0",
+        "cors": "2.8.4",
+        "body-parser": "1.18.3"
+    },
+    "devDependencies": {
+        "jest": "*"
+    },
+    "scripts": {
+        "start": "node index.js",
+        "dev": "nodemon",
+        "test": "jest --watchAll"
+    },
+    "jest": {
+        "testEnvironment": "node"
+    }
+}
