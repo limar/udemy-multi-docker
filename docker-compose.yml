@@ -1,0 +1,47 @@
+version : '3'
+services:
+  postgres:
+    image: 'postgres:latest'
+    ports: - 5432
+  
+  redis:
+    image: 'redis:latest'
+    ports:
+      - 6379
+
+  server:
+    build:
+      context: server/
+      dockerfile: Dockerfile.dev
+    image: limar/server-dev
+    ports:
+      - 3000
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - PGHOST=postgres
+      - PGPORT=5432
+      - PGDATABASE=postgres
+      - PGUSER=postgres
+      - PGPASSWORD=postgres_password
+
+  client:
+    build:
+      context: client/
+      dockerfile: Dockerfile.dev
+    image: limar/client-dev
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+  
+  worker:
+    build:
+      context: worker/
+      dockerfile: Dockerfile.dev
+    image: limar/worker-dev
+    volumes:
+      - ./server:/app
+      - /app/node_modules
