@@ -69,4 +69,4 @@ class Fib extends Component {
     }
 }
 
-module.exports = Fib;
+export default Fib;
