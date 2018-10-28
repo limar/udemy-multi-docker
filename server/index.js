@@ -51,9 +51,15 @@ app.get('/values/current', async (req, res) => {
 });
 
 app.post('/values', async (req, res) => {
+    if(!('index' in req.body)){
+        res.status(422).send('Index parameter not specified');
+        return;
+    }
+
     const index = req.body.index;
     if(parseInt(index) >= 40){
         res.status(422).send('Index too high');
+        return;
     }
 
     redisClient.hset('values', index, 'Nothing yet!');
