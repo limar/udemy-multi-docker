@@ -24,7 +24,7 @@
         {
             "name" : "nginxcontainer",
             "image" : "limar/multi-nginx",
-            "essential" : "true",
+            "essential" : false,
             "portMappings" : [
                 {
                     "hostPort" : "80",
