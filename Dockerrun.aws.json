@@ -18,13 +18,13 @@
         {
             "name" : "worker",
             "image": "limar/multi-worker",
-            "essential" : true,
+            "essential" : false,
             "memory" : 128
         },
         {
             "name" : "nginxcontainer",
             "image" : "limar/multi-nginx",
-            "essential" : false,
+            "essential" : true,
             "portMappings" : [
                 {
                     "hostPort" : "80",
