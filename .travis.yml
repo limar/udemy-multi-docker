@@ -22,3 +22,17 @@ after_success:
   - docker push limar/multi-worker
   - docker push limar/multi-server
   - docker push limar/multi-nginx
+
+deploy:
+  provider: elasticbeanstalk
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
+  region: ap-northeast-2
+  app: udemy-multi-docker
+  env: UdemyDockerReact-env
+  bucket_name: "elasticbeanstalk-ap-northeast-2-615992251931"
+  bucket_path: "udemy-multi-docker"
+  on:
+    repo: limar/udemy-multi-docker
+    branch: master
