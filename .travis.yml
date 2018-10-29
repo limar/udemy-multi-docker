@@ -1,0 +1,24 @@
+sudo: requires
+services:
+- docker
+
+before_install:
+- docker build -f ./client/Dockerfile.dev -t limar/client-dev ./client
+
+script:
+- docker run limar/client-dev env CI=1 npm test
+
+after_success:
+  - docker build -f ./client/Dockerfile -t limar/multi-client ./client
+  - docker build -f ./worker/Dockerfile -t limar/multi-worker ./worker
+  - docker build -f ./server/Dockerfile -t limar/multi-server ./server
+  - docker build -f ./nginx/Dockerfile -t limar/multi-nginx ./nginx
+
+# Log into the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+# Push those images to
+  - docker push limar/multi-client
+  - docker push limar/multi-worker
+  - docker push limar/multi-server
+  - docker push limar/multi-nginx
