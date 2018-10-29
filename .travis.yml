@@ -30,7 +30,7 @@ deploy:
     secure: "$AWS_SECRET_KEY"
   region: ap-northeast-2
   app: udemy-multi-docker
-  env: UdemyDockerReact-env
+  env: UdemyMultiDocker-env
   bucket_name: "elasticbeanstalk-ap-northeast-2-615992251931"
   bucket_path: "udemy-multi-docker"
   on:
