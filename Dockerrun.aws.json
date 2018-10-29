@@ -22,7 +22,7 @@
             "memory" : 128
         },
         {
-            "name" : "nginx",
+            "name" : "nginxcontainer",
             "image" : "limar/multi-nginx",
             "essential" : "true",
             "portMappings" : [
