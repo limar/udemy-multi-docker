@@ -24,7 +24,7 @@
         {
             "name" : "nginxcontainer",
             "image" : "limar/multi-nginx",
-            "essential" : false,
+            "essential" : true,
             "portMappings" : [
                 {
                     "hostPort" : "80",
@@ -32,7 +32,13 @@
                 }
             ],
             "links" : ["client", "server"],
-            "memory" : 128
+            "memory" : 128,
+            "mountPoints": [
+                {
+                  "sourceVolume": "awseb-logs-nginxcontainer",
+                  "containerPath": "/var/log/nginx"
+                }
+            ]
         }
     ]
 }
