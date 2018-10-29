@@ -6,14 +6,14 @@
             "image": "limar/multi-client",
             "hostname" : "client",
             "essential" : false,
-            "memory" : 128
+            "memory" : 160
         },
         {
             "name" : "server",
             "image": "limar/multi-server",
             "hostname" : "api",
             "essential" : false,
-            "memory" : 128
+            "memory" : 160
         },
         {
             "name" : "worker",
@@ -32,7 +32,7 @@
                 }
             ],
             "links" : ["client", "server"],
-            "memory" : 128,
+            "memory" : 160,
             "mountPoints": [
                 {
                   "sourceVolume": "awseb-logs-nginxcontainer",
