@@ -5,7 +5,7 @@
             "name" : "client",
             "image": "limar/multi-client",
             "hostname" : "client",
-            "essential" : true,
+            "essential" : false,
             "memory" : 128
         },
         {
@@ -18,7 +18,7 @@
         {
             "name" : "worker",
             "image": "limar/multi-worker",
-            "essential" : false,
+            "essential" : true,
             "memory" : 128
         },
         {
